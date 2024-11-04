@@ -1,0 +1,96 @@
+﻿@model SWP_Project.Models.BookingViewModel
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Phương Thức Thanh Toán</title>
+    <link rel="stylesheet" href="~/css/payment.css" />
+</head>
+<body>
+    <header>
+        <h1>Chọn Phương Thức Thanh Toán</h1>
+        <p>Sự kiện: @Model.EventTitle</p>
+        <p>Ghế đã chọn: @Model.SeatNumber</p>
+        <p>Tổng giá: @Model.TotalPrice.ToString("C")</p>
+    </header>
+
+    <main>
+        <form id="payment-method-form" asp-action="SubmitPayment" asp-controller="Payment" method="post">
+            <div class="form-group">
+                <label for="payment-method">Phương Thức Thanh Toán:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">-- Chọn Phương Thức --</option>
+                    <option value="credit-card">Thẻ Tín Dụng</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="e-wallet">Ví Điện Tử</option>
+                </select>
+            </div>
+
+            <div id="payment-info" class="hidden"></div>
+
+            <button type="submit">Tiếp Tục</button>
+        </form>
+    </main>
+
+    <div id="overlay" class="hidden"></div>
+
+    <div id="payment-confirm-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Xác Nhận Thanh Toán</h2>
+            <p>Bạn có chắc chắn muốn tiếp tục thanh toán?</p>
+            <button id="confirm-payment">Xác Nhận</button>
+            <button id="cancel-payment">Hủy</button>
+        </div>
+    </div>
+
+    <!-- Giả sử bạn có một dropdown hoặc input để chọn ghế -->
+    <select id="seatSelection">
+        <option value="">-- Chọn Ghế --</option>
+        <option value="1">Ghế 1</option>
+        <option value="2">Ghế 2</option>
+        <!-- Các tùy chọn ghế khác -->
+    </select>
+
+    <button id="bookTicketBtn">Đặt Vé</button>
+
+    <script src="~/js/booking.js"></script>
+    <script>
+        function bookTicket() {
+            var selectedSeat = document.getElementById("seatSelection").value;
+            if (selectedSeat) {
+                window.location.href = '/Payment/Index?seat=' + selectedSeat;
+            } else {
+                alert("Vui lòng chọn chỗ ngồi trước khi đặt vé.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('bookTicketBtn').addEventListener('click', bookTicket);
+
+            // Hiển thị modal xác nhận thanh toán khi form được submit
+            document.getElementById('payment-method-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById('payment-confirm-modal').classList.remove('hidden');
+                document.getElementById('overlay').classList.remove('hidden');
+            });
+
+            // Xác nhận thanh toán
+            document.getElementById('confirm-payment').addEventListener('click', function () {
+                document.getElementById('payment-method-form').submit();
+            });
+
+            // Hủy thanh toán
+            document.getElementById('cancel-payment').addEventListener('click', function () {
+                document.getElementById('payment-confirm-modal').classList.add('hidden');
+                document.getElementById('overlay').classList.add('hidden');
+            });
+        });
+    </script>
+
+    @section Scripts {
+        <script src="~/js/eventdetail.js"></script>
+    }
+</body>
+</html>

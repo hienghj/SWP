@@ -1,0 +1,32 @@
+﻿@model List<Event>
+
+<h2>Quản lý sự kiện</h2>
+
+<a href="/Events/Add">Thêm sự kiện</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Địa điểm</th>
+            <th>Ngày</th>
+            <th>Giá</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var eventItem in Model)
+        {
+            <tr>
+                <td>@eventItem.Title</td>
+                <td>@eventItem.Location</td>
+                <td>@eventItem.ShowDate.ToString("dd/MM/yyyy")</td>
+                <td>@eventItem.Price</td>
+                <td>
+                    <a href="/Events/Edit?id=@eventItem.Id">Sửa</a>
+                    <a href="/Events/Delete?id=@eventItem.Id" onclick="return confirm('Bạn có chắc chắn muốn xóa sự kiện này?');">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

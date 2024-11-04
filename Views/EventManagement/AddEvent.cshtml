@@ -1,0 +1,15 @@
+﻿@model Event
+
+<h2>Thêm sự kiện</h2>
+
+<form asp-action="Add" method="post">
+    <label>Tiêu đề:</label>
+    <input type="text" name="Title" required />
+    <label>Địa điểm:</label>
+    <input type="text" name="Location" required />
+    <label>Ngày:</label>
+    <input type="date" name="Date" required />
+    <label>Giá:</label>
+    <input type="number" name="Price" required />
+    <button type="submit">Thêm</button>
+</form>

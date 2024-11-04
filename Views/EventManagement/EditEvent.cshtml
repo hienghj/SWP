@@ -1,0 +1,28 @@
+﻿@model Event
+
+<h2>Sửa sự kiện</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <label for="title">Tiêu đề:</label>
+    <input type="text" id="title" name="Title" value="@Model.Title" placeholder="Nhập tiêu đề" required />
+
+    <label for="location">Địa điểm:</label>
+    <input type="text" id="location" name="Location" value="@Model.Location" placeholder="Nhập địa điểm" required />
+
+    <label for="date">Ngày:</label>
+    <input type="date" id="date" name="Date" value="@Model.ShowDate.ToString("yyyy-MM-dd")" required />
+
+    <label for="price">Giá:</label>
+    <input type="number" id="price" name="Price" value="@Model.Price" min="0" required placeholder="Nhập giá" />
+
+    <button type="submit">Cập nhật</button>
+</form>
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div style="color: red;">
+        @ViewData["ErrorMessage"]
+    </div>
+}

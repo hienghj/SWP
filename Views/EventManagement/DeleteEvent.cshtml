@@ -1,0 +1,13 @@
+﻿@model Event
+<h2>Xóa sự kiện</h2>
+
+<p>Bạn có chắc chắn muốn xóa sự kiện <strong>@Model.Title</strong> không?</p>
+<p>Địa điểm: <strong>@Model.Location</strong></p>
+<p>Ngày: <strong>@Model.ShowDate.ToString("dd/MM/yyyy")</strong></p>
+<p>Giá: <strong>@Model.Price?.ToString("N0") ?? "Không xác định"</strong> VND</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <button type="submit">Xóa</button>
+    <a href="@Url.Action("Index")">Hủy</a>
+</form>

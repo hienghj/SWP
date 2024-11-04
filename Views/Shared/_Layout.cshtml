@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SWP_Project.Areas.Identity.Data
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SWP_Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU5tN0TlHKxK6xhs5m6Zj3KNF7jwhA0f+ixk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SWP_Project.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Sofadi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Sofadi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Eventor</h1>
+            <nav>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
+                    <li><a asp-area="" asp-controller="Events" asp-action="Search">Tìm Kiếm</a></li>
+                    <li><a asp-area="" asp-controller="Events" asp-action="Index">Quản Lý</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+
+                    {
+                        <li><a asp-area="Identity" asp-controller="Profile" asp-action="Profile">Hồ Sơ</a></li>
+                        <li><a href="noti.html">Thông báo</a></li>
+                        <li>
+                            <a id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a id="register" asp-area="Identity" asp-page="/Account/Register">Đăng Ký</a>
+                        </li>
+                        <li>
+                            <a id="login" asp-area="Identity" asp-page="/Account/Login">Đăng Nhập</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @if (Context.Request.Path != "/Events/Search")
+    {
+        <footer>
+            <div class="footer-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <ul>
+                        <li>Địa chỉ: Đại học FPT Quy Nhơn</li>
+                        <li>Kết nối với chúng tôi tại</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook"></a>
+                        <a href="#"><img src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000" alt="Instagram"></a>
+                        <a href="#"><img src="https://img.icons8.com/?size=100&id=13963&format=png&color=000000" alt="Twitter"></a>
+                    </div>
+                </div>
+
+                <!-- Terms of Use Section -->
+                <div class="terms-section">
+                    <h3>Điều Khoản Sử Dụng</h3>
+                    <ul>
+                        <li><a href="#">Điều Khoản Chung</a></li>
+                        <li><a href="#">Điều Khoản Giao Dịch</a></li>
+                        <li><a href="#">Chính Sách Thanh Toán</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                        <li><a href="#">Câu Hỏi Thường Gặp</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care Section -->
+                <div class="customer-care-section">
+                    <h3>Chăm Sóc Khách Hàng</h3>
+                    <ul>
+                        <li><a href="#">Điện thoại: 0-XXX-XXX-XX</a></li>
+                        <li><a href="#">Giờ làm việc: 8:00 - 22:00</a></li>
+                        <li><a href="#">Email hỗ trợ: hotro@eventor.com</a></li>
+                    </ul>
+                    <ul>
+                        <li><h3><a href="feedback&support.html">Gửi Email phản hồi</a></h3></li>
+                    </ul>
+                </div>
+            </div>
+        <!-- Footer Bottom -->
+        <p>© 2024 Eventor. All rights reserved.</p>
+        </footer>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @section Scripts {
+        <script src="~/js/eventdetail.js"></script>
+    }
+</body>
+</html>

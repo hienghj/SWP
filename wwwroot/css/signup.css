@@ -1,0 +1,98 @@
+/* Định dạng chung cho màn hình đăng ký */
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(rgba(54, 55, 104, 0.5), rgba(30, 30, 65, 0.5)), url('https://wallpaperaccess.com/full/81820.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.register-container {
+    background-color: rgba(39, 40, 72, 0.833);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 8px rgba(255, 231, 183, 0.591),
+        /* Outer glow */
+        0 0 50px 25px rgba(255, 250, 246, 0.307);
+    /* Inner bright glow */
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Playwrite DE Grund", cursive;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffeea8;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-family: "Playwrite DE Grund", cursive;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #ffeea8;
+}
+
+.input-group input {
+    font-family: "Lora", serif;
+    width: 93%;
+    padding: 10px;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    border-color: #3259cc;
+    outline: none;
+}
+
+.action-group {
+    text-align: center;
+}
+
+.btn-submit {
+    font-family: "Playwrite DE Grund", cursive;
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    color: #0D1A2F;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #8066c7, #c56f6f, #ebc471);
+    color: #ebedff;
+}
+
+.extra-actions {
+    color: rgb(236, 236, 250);
+    font-family: "Lora", serif;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.extra-actions a {
+    color: #ffeea8;
+    font-family: "Lora", serif;
+    text-decoration: none;
+}
+
+.extra-actions a:hover {
+    color: #ffbda5;
+}

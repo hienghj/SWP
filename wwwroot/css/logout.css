@@ -1,0 +1,74 @@
+/* Định dạng chung */
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(rgba(54, 55, 104, 0.5), rgba(30, 30, 65, 0.5)), url('https://content.presspage.com/uploads/685/1920_yeepengchiangmai.jpg?10000');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(39, 40, 72, 0.833);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 8px rgba(255, 231, 183, 0.591),
+        /* Outer glow */
+        0 0 50px 25px rgba(255, 250, 246, 0.307);
+    /* Inner bright glow */
+    width: 300px;
+}
+
+.logout-section h2 {
+    font-family: "Playwrite DE Grund", cursive;
+    color: #ffeea8;
+    margin-bottom: 20px;
+}
+
+.logout-section p {
+    font-family: "Lora", serif;
+    font-size: 18px;
+    color: #fff7d7;
+    margin-bottom: 30px;
+}
+
+.logout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-family: "Playwrite DE Grund", cursive;
+    font-size: 16px;
+    background: linear-gradient(135deg, #327c7e, #3e9b7a, #b7e68d);
+    color: #ebedff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    color: #0D1A2F;
+}
+
+button#confirmLogout {
+    background: linear-gradient(135deg, #8066c7, #c56f6f, #ebc471);
+    color: #ebedff;
+}
+
+button#confirmLogout:hover {
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    color: #0D1A2F;
+}

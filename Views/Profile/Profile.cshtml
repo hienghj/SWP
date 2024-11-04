@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SWP_Project.Areas.Identity.Data
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@model SWP_Project.Models.Profile
+@{
+    ViewData["Title"] = "Hồ Sơ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+
+<main>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var currentUser = await UserManager.GetUserAsync(User);
+        var fullName = currentUser.FirstName + " " + currentUser.LastName;
+        <section class="profile-section">
+            <h2>Thông Tin Cá Nhân</h2>
+            <form id="profile-form">
+                <label for="name">Tên:</label>
+                <input type="text" id="name" value="@fullName" disabled>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="@currentUser.Email" disabled>
+
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" id="phone" value="@currentUser.PhoneNumber" disabled>
+            </form>
+            <button id="update-profile-btn" class="btn btn-primary">
+                <a href="/UpdateProfile/UpdateProfile" style="color: white; text-decoration: none;">Cập nhật hồ sơ</a>
+            </button>
+            <button id="change-password-btn" class="btn btn-secondary">
+                <a href="/ChangePassword/ChangePassword" style="color: white; text-decoration: none;">Đổi mật khẩu</a>
+            </button>
+        </section>
+
+        <section class="ticket-management">
+            <h2>Quản Lý Vé</h2>
+            <table id="ticket-table">
+                <thead>
+                    <tr>
+                        <th>ID Vé</th>
+                        <th>Sự Kiện</th>
+                        <th>Số Ghế</th>
+                        <th>Ngày Mua</th>
+                        <th>Mã QR</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Các vé sẽ được hiển thị ở đây -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="booking-history-section">
+            <h2>Lịch Sử Đặt Vé</h2>
+            <div id="booking-history-container" class="event-container">
+                <!-- Các vé đã đặt sẽ được hiển thị ở đây -->
+            </div>
+        </section>
+    }
+</main>
+
+<!-- Modal Xác Nhận Hủy Vé -->
+<div id="cancel-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('cancel-modal')">&times;</span>
+        <h2>Xác Nhận Hủy Vé</h2>
+        <p>Bạn có chắc chắn muốn hủy vé này?</p>
+        <button onclick="confirmCancel()">Xác Nhận</button>
+        <button onclick="closeModal('cancel-modal')">Hủy</button>
+    </div>
+</div>
+
+<!-- Modal Chuyển Nhượng Vé -->
+<div id="transfer-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('transfer-modal')">&times;</span>
+        <h2>Chuyển Nhượng Vé</h2>
+        <label for="new-owner">Nhập thông tin người nhận mới:</label>
+        <input type="text" id="new-owner" placeholder="Tên người nhận">
+        <button onclick="confirmTransfer()">Xác Nhận</button>
+        <button onclick="closeModal('transfer-modal')">Hủy</button>
+    </div>
+</div>
+
+<!-- Modal Tải Mã QR -->
+<div id="qr-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('qr-modal')">&times;</span>
+        <h2>Tải Mã QR</h2>
+        <p>Nhấp vào liên kết bên dưới để tải mã QR của vé:</p>
+        <a id="qr-download-link" href="#" download>Download QR Code</a>
+        <button onclick="closeModal('qr-modal')">Đóng</button>
+    </div>
+</div>
+
+<script src="~/js/profile.js" asp-append-version="true"></script>

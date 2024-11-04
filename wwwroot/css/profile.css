@@ -1,0 +1,252 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #0D1A2F;
+    color: #333;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0D1A2F;
+    color: #ffeea8;
+}
+
+.header-container h1 {
+    font-family: "Sofadi One", system-ui;
+    font-size: 3em;
+}
+
+.header-container nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header-container nav ul li {
+    display: inline;
+}
+
+.header-container nav ul li a {
+    color: #ffeea8;
+    text-decoration: none;
+    font-family: "Lora", serif;
+    font-weight: bold;
+}
+
+.header-container nav ul li a:hover {
+    color: #f1c40f;
+}
+
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-section,
+.booking-history-section,
+.ticket-management {
+    background: linear-gradient(160deg, #0d102f, #2e1e31, #5d3452);
+    border: 1px solid #ffd2a1;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.profile-section h2,
+.booking-history-section h2,
+.ticket-management h2 {
+    font-family: "Playwrite DE Grund", cursive;
+    color: #ffeea8;
+    margin-bottom: 10px;
+}
+
+.table-container {
+    font-family: "Lora", serif;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+button.cancel {
+    background-color: #cb473e;
+    border: 0.8px solid #ffd2a1;
+    border-radius: 5px;
+}
+
+button.transfer {
+    background-color: #369ac9;
+    border: 0.8px solid #ffd2a1;
+    border-radius: 5px;
+}
+
+button.qr-code {
+    background-color: #23ac7e;
+    border: 0.8px solid #ffd2a1;
+    border-radius: 5px;
+}
+
+.modal-content button:hover {
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    color: #0D1A2F;
+}
+
+.profile-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-section label {
+    color: #fffbeb;
+    font-size: 16px;
+}
+
+.profile-section input {
+    padding: 10px;
+    font-size: 16px;
+    color: #dfe3ff;
+    border: 1px solid #ffe7e7;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-section form {
+    margin-bottom: 20px;
+}
+
+.profile-section button {
+    padding: 20px 20px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    color: #0D1A2F;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.profile-section button:hover {
+    background: linear-gradient(135deg, #8066c7, #c56f6f, #ebc471);
+    color: #dfe3ff;
+}
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.event-item {
+    background: linear-gradient(135deg, #fffde8, #ffe2ed, #cffffd);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(50% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h3 {
+    margin: 0 0 10px;
+}
+
+.event-item p {
+    margin: 5px 0;
+}
+
+
+main {
+    padding: 20px;
+}
+
+.profile-section,
+.ticket-management {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #fff1e5;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    color: #fffbeb;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

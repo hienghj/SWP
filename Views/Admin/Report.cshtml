@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model List<Report>
+
+    <h2>Doanh thu từng sự kiện</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tên sự kiện</th>
+                <th>Doanh thu</th>
+                <th>Ngày báo cáo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model)
+            {
+                <tr>
+                    <td>@report.EventName</td>
+                    <td>@report.Revenue.ToString("C")</td>
+                    <td>@report.ReportDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

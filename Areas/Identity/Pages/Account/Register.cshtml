@@ -1,0 +1,47 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Đăng Ký";
+}
+<link rel="stylesheet" href="~/css/signup.css" asp-append-version="true" />
+
+<div class="register-container">
+    <h1>Đăng Ký</h1>
+     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="input-group">
+            <label asp-for="Input.LastName">Họ</label>
+            <input type="text" asp-for="Input.LastName" autocomplete="firstname" aria-required="true" placeholder="Họ" required>
+        </div>
+        <div class="input-group">
+            <label asp-for="Input.FirstName">Tên</label>
+            <input type="text" asp-for="Input.FirstName" autocomplete="firstname" aria-required="true" placeholder="Tên" required>
+        </div>
+        <div class="input-group">
+            <label asp-for="Input.Email">Email</label>
+            <input type="email" asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="Nhập email của bạn" required>
+        </div>
+        <div class="input-group">
+            <label asp-for="Input.PhoneNumber">Số Điện Thoại</label>
+            <input type="text" asp-for="Input.PhoneNumber" autocomplete="phonenumber" aria-required="true" placeholder="Số Điện Thoại" required>
+        </div>
+        <div class="input-group">
+            <label asp-for="Input.Password">Mật khẩu</label>
+            <input type="password" asp-for="Input.Password" autocomplete="new-password" aria-required="true" type="password" placeholder="Nhập mật khẩu" required>
+        </div>
+        <div class="input-group">
+            <label asp-for="Input.ConfirmPassword">Nhập lại mật khẩu</label>
+            <input asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true" type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" required>
+        </div>
+        <div class="action-group">
+            <button id="registerSubmit" type="submit" class="btn-submit">Đăng Ký</button>
+        </div>
+        <div class="extra-actions">
+            <p>Bạn đã có tài khoản? <a href="/Identity/Account/Login" id="login-link">Đăng nhập</a></p>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

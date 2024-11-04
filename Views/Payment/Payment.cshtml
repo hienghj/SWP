@@ -1,0 +1,101 @@
+﻿@model SWP_Project.Models.PaymentModel
+@{
+    ViewBag.Title = "Chọn phương thức thanh toán";
+}
+
+<h2>Trang Thanh Toán</h2>
+<p>Bạn đã chọn ghế: @ViewBag.SelectedSeat</p>
+
+<body>
+    <header>
+        <h1>Chọn Phương Thức Thanh Toán</h1>
+    </header>
+
+    <main>
+        <form asp-action="SubmitPayment" asp-controller="Payment" method="post" id="payment-method-form">
+            <div class="form-group">
+                <label for="payment-method">Phương Thức Thanh Toán:</label>
+                <select asp-for="SelectedPaymentMethod" class="form-control" required id="payment-method">
+                    <option value="">-- Chọn Phương Thức --</option>
+                    <option value="credit-card">Thẻ Tín Dụng</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="e-wallet">Ví Điện Tử</option>
+                </select>
+            </div>
+
+            <div id="payment-info" class="hidden">
+                <div id="credit-card-info" class="hidden">
+                    <label for="card-number">Số Thẻ:</label>
+                    <input type="text" id="card-number" name="card-number" required class="form-control">
+                    <label for="expiry-date">Ngày Hết Hạn:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" required class="form-control">
+                </div>
+                <div id="paypal-info" class="hidden">
+                    <label for="paypal-email">Email PayPal:</label>
+                    <input type="email" id="paypal-email" name="paypal-email" required class="form-control">
+                </div>
+                <div id="e-wallet-info" class="hidden">
+                    <label for="wallet-id">ID Ví Điện Tử:</label>
+                    <input type="text" id="wallet-id" name="wallet-id" required class="form-control">
+                </div>
+            </div>
+
+            <button type="submit">Tiếp Tục</button>
+        </form>
+    </main>
+
+    <div id="overlay" class="hidden"></div>
+
+    <div id="payment-confirm-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Xác Nhận Thanh Toán</h2>
+            <p>Bạn có chắc chắn muốn tiếp tục thanh toán?</p>
+            <button id="confirm-payment">Xác Nhận</button>
+            <button id="cancel-payment">Hủy</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hiển thị modal xác nhận thanh toán
+            document.getElementById('payment-method-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById('payment-confirm-modal').classList.remove('hidden');
+                document.getElementById('overlay').classList.remove('hidden');
+            });
+
+            // Xác nhận thanh toán
+            document.getElementById('confirm-payment').addEventListener('click', function () {
+                document.getElementById('payment-method-form').submit();
+            });
+
+            // Hủy thanh toán
+            document.getElementById('cancel-payment').addEventListener('click', function () {
+                document.getElementById('payment-confirm-modal').classList.add('hidden');
+                document.getElementById('overlay').classList.add('hidden');
+            });
+
+            // Hiển thị thông tin thanh toán phù hợp
+            document.getElementById('payment-method').addEventListener('change', function () {
+                const selectedMethod = this.value;
+                document.getElementById('credit-card-info').classList.add('hidden');
+                document.getElementById('paypal-info').classList.add('hidden');
+                document.getElementById('e-wallet-info').classList.add('hidden');
+
+                if (selectedMethod === 'credit-card') {
+                    document.getElementById('credit-card-info').classList.remove('hidden');
+                } else if (selectedMethod === 'paypal') {
+                    document.getElementById('paypal-info').classList.remove('hidden');
+                } else if (selectedMethod === 'e-wallet') {
+                    document.getElementById('e-wallet-info').classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</body>

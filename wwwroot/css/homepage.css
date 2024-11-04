@@ -1,0 +1,267 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #0D1A2F;
+    color: #333;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0D1A2F;
+    color: #ffeea8;
+}
+
+.header-container h1 {
+    font-family: "Sofadi One", system-ui;
+    font-size: 3em;
+}
+
+.header-container nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header-container nav ul li {
+    display: inline;
+}
+
+.header-container nav ul li a {
+    color: #ffeea8;
+    text-decoration: none;
+    font-family: "Lora", serif;
+    font-weight: bold;
+}
+
+.header-container nav ul li a:hover {
+    color: #f1c40f;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    color: white;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    font-family: "Dancing Script", cursive;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.5em;
+    font-family: "Lora", serif;
+    font-style: italic;
+}
+
+/* Banner */
+.banner {
+    width: 80%;
+    height: 400px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #0D1A2F;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.slides {
+    display: flex;
+    width: 500%;
+    animation: slide 10s infinite;
+}
+
+.slides img {
+    width: 20%;
+    height: 500%;
+    object-fit: contain;
+    /* Ensures the whole image is visible */
+    object-position: center;
+    /* Centers the image */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0%);
+    }
+
+    20% {
+        transform: translateX(0%);
+    }
+
+    25% {
+        transform: translateX(-20%);
+    }
+
+    45% {
+        transform: translateX(-20%);
+    }
+
+    50% {
+        transform: translateX(-40%);
+    }
+
+    70% {
+        transform: translateX(-40%);
+    }
+
+    75% {
+        transform: translateX(-60%);
+    }
+
+    95% {
+        transform: translateX(-60%);
+    }
+
+    100% {
+        transform: translateX(-80%);
+    }
+
+    /* Transition to next slide */
+}
+
+/* Featured & Upcoming Events */
+section {
+    margin: 40px auto;
+    max-width: 1000px;
+    padding: 20px;
+    background: linear-gradient(160deg, #0D1A2F, #582846, #ffcd90);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(232, 70, 70, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.6em;
+    font-family: "Playwrite DE Grund", cursive;
+    font-style: bold;
+    color: #ffeea8;
+    margin-bottom: 20px;
+}
+
+.event-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.event {
+    flex: 1 1 45%;
+    background: linear-gradient(135deg, #fffde4, #ffeff5, #fff0d1);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(44, 41, 85, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.event:hover {
+    transform: scale(1.05);
+}
+
+.event h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.event p {
+    font-family: "Lora", serif;
+    font-size: 1.2em;
+    color: #1f1c2c;
+}
+
+/* Remove underline from links inside .event */
+.event a {
+    text-decoration: none;
+    /* Removes the underline */
+    color: inherit;
+    /* Inherits the color from the parent element */
+}
+
+footer {
+    background-color: #0D1A2F;
+    padding: 60px 20px;
+    color: #ffeea8;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    /* Space between columns */
+}
+
+.contact-info {
+    flex: 1;
+    /* Allow contact info to take up one part of the space */
+}
+
+.terms-section,
+.customer-care-section {
+    flex: 1;
+    /* Allow both sections to take equal space */
+}
+
+h3 {
+    margin-bottom: 15px;
+    font-family: "Lora", serif;
+    font-size: 1.2em;
+}
+
+.footer-container ul {
+    list-style: none;
+    font-family: "Lora", serif;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.footer-container ul li a {
+    color: #adaeb7;
+    text-decoration: none;
+}
+
+.footer-container ul li a:hover {
+    color: #ffeea8;
+}
+
+.customer-care-section h3 a {
+    font-family: "Lora", serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #adaeb7;
+    margin-top: 10px;
+}
+
+.customer-care-section h3 a:hover {
+    color: #ffeea8;
+}
+
+footer p {
+    margin-top: 20px;
+    font-family: "Lora", serif;
+    font-size: 0.9em;
+}

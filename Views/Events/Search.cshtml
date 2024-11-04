@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SWP_Project.Models.Event>
+
+@{
+    ViewData["Title"] = "Tìm Kiếm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/search.css" asp-append-version="true" />
+
+<main>
+    <section class="search-section">
+        <h2>Tìm Kiếm Sự Kiện</h2>
+            @using (Html.BeginForm("Search", "Events", FormMethod.Post))
+            {
+             <div class="search-container">
+                <input type="text" id="search-input" placeholder="Nhập tên sự kiện, nghệ sĩ, địa điểm..." name="search" />
+                <button type="submit" id="search-button">Tìm Kiếm</button>
+            </div>
+
+            }
+    </section>
+
+    <section class="search-results">
+        <h2>Kết Quả Tìm Kiếm</h2>
+        <div id="search-results-container" class="event-container">
+            @if (Model == null || Model.Count() == 0)
+            {
+                
+            } else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="event-item">
+                        <img src="https://cdn-www.vinid.net/c3fd2f56-tin-tuc-app-1920x1080-1.jpg" alt="@item.Title" style="width: 100%; border-radius: 5px;">
+                        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                        <p><strong>Ngày:</strong> @Html.DisplayFor(modelItem => item.ShowDate)</p>
+                        <p><strong>Địa điểm:</strong> @Html.DisplayFor(modelItem => item.Location)</p>
+                    </div>
+                }
+            }
+            <!-- Các sự kiện tìm kiếm sẽ được hiển thị ở đây -->
+        </div>
+    </section>
+</main>

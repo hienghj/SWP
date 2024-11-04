@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <!-- Sidebar cho Dashboard -->
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading">Admin Dashboard</div>
+                <div class="list-group list-group-flush">
+                    <a href="@Url.Action("Index", "Report")" class="list-group-item list-group-item-action bg-light">Báo cáo</a>
+                    <a href="@Url.Action("Index", "Statistics")" class="list-group-item list-group-item-action bg-light">Thống kê</a>
+                    <a href="@Url.Action("Index", "Account")" class="list-group-item list-group-item-action bg-light">Quản lý tài khoản</a>
+                    <a href="@Url.Action("Index", "Complaint")" class="list-group-item list-group-item-action bg-light">Xử lý khiếu nại</a>
+                </div>
+            </div>
+
+            <!-- Nội dung chính của Dashboard -->
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                    <h2 class="ms-3">Trang Quản trị</h2>
+                </nav>
+
+                <div class="container-fluid mt-4">
+                    <!-- Vùng nội dung chính của các trang con -->
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+        <!-- Toggle sidebar script -->
+        <script>
+            var wrapper = document.getElementById("wrapper");
+            var toggleButton = document.getElementById("menu-toggle");
+
+            toggleButton.onclick = function () {
+                wrapper.classList.toggle("toggled");
+            };
+        </script>
+
+        <style>
+            /* Tùy chỉnh giao diện Dashboard */
+            #wrapper {
+                display: flex;
+                width: 100%;
+            }
+            #sidebar-wrapper {
+                width: 250px;
+                height: 100vh;
+                overflow-y: auto;
+            }
+            #page-content-wrapper {
+                flex: 1;
+                padding: 20px;
+            }
+            .toggled #sidebar-wrapper {
+                margin-left: -250px;
+            }
+        </style>
+    </body>
+    </html>
+
+
+}

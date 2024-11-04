@@ -1,0 +1,76 @@
+@model SWP_Project.Models.Event
+
+@{
+    ViewData["Title"] = "EventDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/eventdetail.css" asp-append-version="true" />
+
+<main>
+    <!-- Thông Tin Sự Kiện -->
+    <section class="event-details">
+        <h2>@Model.Title</h2>
+        <p>Ngày: @Model.ShowDate.ToString("dd/MM/yyyy")</p>
+        <p>Địa điểm: @(Model.Location ?? "Chưa cập nhật")</p>
+        <p>Giá vé: @(Model.Price.HasValue ? Model.Price.Value.ToString("C") : "Liên hệ")</p>
+    </section>
+
+    <!-- Hình Ảnh và Video -->
+    <section class="event-media">
+        <h3>Hình Ảnh Sự Kiện</h3>
+        <div class="media-container">
+            @if (Model.ImageUrl != null)
+            {
+                <img src="@Model.ImageUrl" alt="Event Image" class="event-image" />
+            }
+            else
+            {
+                <p>No image available</p>
+            }
+        </div>
+    </section>
+
+    <!-- Chọn Chỗ Ngồi -->
+    <section class="seat-selection">
+        <h3>Chọn Chỗ Ngồi</h3>
+        <div class="seating-chart">
+            <p>Chọn chỗ ngồi của bạn:</p>
+            <select id="seatSelection">
+                @for (int i = 1; i <= Model.Seats; i++)
+                {
+                    <option value="@i">Ghế @i</option>
+                }
+            </select>
+        </div>
+    </section>
+
+    <!-- Đặt Vé -->
+    <section class="booking-section">
+        <button id="bookTicketBtn">Đặt Vé</button>
+    </section>
+
+    <!-- Thông Tin Liên Hệ và Chỉ Đường -->
+    <section class="contact">
+        <h3>Thông Tin Liên Hệ và Chỉ Đường</h3>
+        <p>Email: info@example.com</p>
+        <p>Số điện thoại: 0123 456 789</p>
+        <p>Địa chỉ: XXX</p>
+        <!-- Thêm bản đồ hoặc chỉ đường Google Maps -->
+        <div class="map">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=@Model.Location&zoom=15&size=600x300&key=YOUR_API_KEY" alt="Map" class="event-map" />
+        </div>
+    </section>
+</main>
+
+<script>
+    document.getElementById('bookTicketBtn').addEventListener('click', function () {
+        var selectedSeat = document.getElementById("seatSelection").value;
+        if (selectedSeat) {
+            // Chuyển hướng đến trang thanh toán với ghế đã chọn
+            window.location.href = '/Payment/Index?seat=' + selectedSeat;
+        } else {
+            alert("Vui lòng chọn chỗ ngồi trước khi đặt vé.");
+        }
+    });
+</script>

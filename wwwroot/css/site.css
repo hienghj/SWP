@@ -1,0 +1,135 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0D1A2F;
+    color: #ffeea8;
+}
+
+.header-container h1 {
+    font-family: "Sofadi One", system-ui;
+    font-size: 3em;
+}
+
+.header-container nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header-container nav ul li {
+    display: inline;
+}
+
+.header-container nav ul li a {
+    color: #ffeea8;
+    text-decoration: none;
+    font-family: "Lora", serif;
+    font-weight: bold;
+}
+
+.header-container nav ul li a:hover {
+    color: #f1c40f;
+}
+
+/* Footer */
+
+footer {
+    background-color: #0D1A2F;
+    padding: 60px 20px;
+    color: #ffeea8;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    /* Space between columns */
+}
+
+.contact-info {
+    flex: 1;
+    /* Allow contact info to take up one part of the space */
+}
+
+.terms-section,
+.customer-care-section {
+    flex: 1;
+    /* Allow both sections to take equal space */
+}
+
+h3 {
+    margin-bottom: 15px;
+    font-family: "Lora", serif;
+    font-size: 1.2em;
+}
+
+.footer-container ul {
+    list-style: none;
+    font-family: "Lora", serif;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.footer-container ul li a {
+    color: #adaeb7;
+    text-decoration: none;
+}
+
+.footer-container ul li a:hover {
+    color: #ffeea8;
+}
+
+.customer-care-section h3 a {
+    font-family: "Lora", serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #adaeb7;
+    margin-top: 10px;
+}
+
+.customer-care-section h3 a:hover {
+    color: #ffeea8;
+}
+
+footer p {
+    margin-top: 20px;
+    font-family: "Lora", serif;
+    font-size: 0.9em;
+}

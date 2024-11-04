@@ -1,0 +1,58 @@
+@model SWP_Project.Models.EventForHome
+
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+
+<div class="hero">
+    <h1>Chào Mừng Đến Với Trang Sự Kiện</h1>
+    <p>Khám phá các sự kiện sắp tới và nổi bật</p>
+</div>
+
+<!-- Banner -->
+<div class="banner">
+    <div class="slides">
+        <img src="https://cdn-www.vinid.net/c3fd2f56-tin-tuc-app-1920x1080-1.jpg" alt="Slide 1">
+        <img src="https://media.tapchixaydung.vn/mediav2/upload/userfiles2021/images/nguyenkien/hinh-1-2.jpg" alt="Slide 2">
+        <img src="https://caodang.fpt.edu.vn/wp-content/uploads/teambuilding.jpeg" alt="Slide 3">
+        <img src="https://storage.googleapis.com/td-robb-media/2023/11/6b846bcb-e8d2-41fd-8ed3-9946892c13fd.jpg" alt="Slide 4">
+    </div>
+</div>
+
+<main>
+    <!-- Sự Kiện Nổi Bật -->
+    <section class="featured-events">
+        <h2>Sự Kiện Nổi Bật</h2>
+        <div class="event-list">
+            @foreach (var item in Model.HotEvents)
+            {
+                <div class="event">
+                    <a asp-controller="EventDetail" asp-action="EventDetail" asp-route-id="@item.Id">
+                        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                        <p>Ngày: @Html.DisplayFor(modelItem => item.ShowDate)</p>
+                        <p>Địa điểm: @Html.DisplayFor(modelItem => item.Location)</p>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Sự Kiện Sắp Tới -->
+    <section class="upcoming-events">
+        <h2>Sự Kiện Sắp Tới</h2>
+        <div class="event-list">
+            @foreach (var item in Model.UpcommingEvents)
+            {
+                <div class="event">
+                    <a asp-controller="EventDetail" asp-action="EventDetail" asp-route-id="@item.Id">
+                        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                        <p>Ngày: @Html.DisplayFor(modelItem => item.ShowDate)</p>
+                        <p>Địa điểm: @Html.DisplayFor(modelItem => item.Location)</p>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+</main>
